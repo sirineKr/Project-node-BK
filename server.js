@@ -34,6 +34,10 @@ connection.connect(function(error){
 
 });
 
+app.get("/",function(req,res){
+  res.send("hi");
+});
+
 //code
 //get all users
 app.get('/users', function(req,res){
