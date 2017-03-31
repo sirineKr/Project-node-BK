@@ -10,11 +10,6 @@ app.use(bodyP.urlencoded({
    extended: true
 }));
 
-app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*");
-   next();
-  }
-);
 
 var connection = mysql.createConnection({
   //properties
