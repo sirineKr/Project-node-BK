@@ -107,5 +107,18 @@ app.post('/register',function(req,res){
     
 });
 
+//get preference by event
+app.get('/event/preference', function(req,res){
+  connection.query("SELECT * FROM preference WHERE idevent = 2"
+, function(error,rows,field){
+    if(!!error){
+      console.log('Error in the query');
+    }else{
+      console.log('Successful query !');
+      res.json(rows);
+    }
+  });
+});
+
 
 app.listen(process.env.PORT || 1337);
