@@ -34,7 +34,7 @@ connection.connect(function(error){
 
 });
 
-app.get("/",function(req,res){
+app.get('/',function(req,res){
   res.send("hi");
 });
 
@@ -102,27 +102,11 @@ app.get('/event/OrderByDateVote', function(req,res){
 
 //create a user
 app.post('/register',function(req,res){
-        /*var login = req.body.login;
-        var pwd = req.body.password;
-        var c1 = req.body.color;
-        var nom = req.body.firstName;
-        var pren = req.body.lastName;
-        
-        var login = "Bouhlel.nermine@gmail.com";
-        var pwd = "123";
-        var c1 =  "pink";
-        var nom = "bouhlel";
-        var pren = "nermine";
-        */
-        //var type = "user"
-            //if(c1 == "" || nom == "" || login == "" || pwd == "" || pren == ""){
-            //    console.log("login or password is empty !!");
-            //}else{
-                 console.log(req);
-                 console.log("test 2 : "+req.is('application/*'));
-                 res.send(req.body);
-                 connection.query("INSERT INTO users VALUES (?,?,?,?,?,?)",[req.body.login,req.body.password,req.body.color,req.body.firstName,req.body.lastName,"user"],function(err,resultat) {
-                    console.log(resultat,err);
+      console.log(req);
+      console.log("test 2 : "+req.is('application/*'));
+      res.send(req.body);
+      connection.query("INSERT INTO users VALUES (?,?,?,?,?,?)",[req.body.login,req.body.password,req.body.color,req.body.firstName,req.body.lastName,"user"],function(err,resultat) {
+      console.log(resultat,err);
                 });
             //}
     
