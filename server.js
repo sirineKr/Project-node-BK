@@ -109,7 +109,7 @@ app.post('/register',function(req,res){
 //login ws
 app.post('/login',function(req,res){
       res.send(req.body);
-      connection.query("SELECT * from users where login=? and pass=? ",[login,pass],function(err,resultat) {
+      connection.query("SELECT * from users where login=? and password=? ",[login,pass],function(err,resultat) {
          console.log(resultat,err);
          res.json(rows)
       });
