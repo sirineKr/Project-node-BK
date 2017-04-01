@@ -110,8 +110,9 @@ app.post('/register',function(req,res){
 app.post('/login',function(req,res){
       res.send(req.body);
       connection.query("SELECT * from users where login=? and pass=? ",[login,pass],function(err,resultat) {
-      console.log(resultat,err);
-                });
+         console.log(resultat,err);
+         res.json(rows)
+      });
 });
 
 //get preference by event
