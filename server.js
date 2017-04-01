@@ -99,14 +99,14 @@ app.get('/event/OrderByDateVote', function(req,res){
 //create a user
 app.post('/register',function(req,res){
       connection.query("INSERT INTO users VALUES (?,?,?,?,?,?)",[req.body.login,req.body.password,req.body.color,req.body.firstName,req.body.lastName,"user"],function(err,result) {
-            res.send('le resulat est :'+result);
+            res.send(result);
       });
 });
 
 //login ws
 app.post('/login',function(req,res){
       connection.query("SELECT * from users where login=? and password=? ",[req.body.login,req.body.password],function(err,result) {
-          res.send('le resulat est :'+result);
+          res.send(result);
       });
 });
 
