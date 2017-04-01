@@ -101,8 +101,13 @@ app.post('/register',function(req,res){
       console.log(req);
       console.log("test 2 : "+req.is('application/*'));
       res.send(req.body);
-      connection.query("INSERT INTO users VALUES (?,?,?,?,?,?)",[req.body.login,req.body.password,req.body.color,req.body.firstName,req.body.lastName,"user"],function(err,resultat) {
-      console.log(resultat,err);
+      connection.query("INSERT INTO users VALUES (?,?,?,?,?,?)",[req.body.login,req.body.password,req.body.color,req.body.firstName,req.body.lastName,"user"], function(error,rows,field){
+         if(!!error){
+            console.log('Error in the query');
+         }else{
+            console.log('Successful query');
+            res.json(rows);
+         }
       });
 });
 
