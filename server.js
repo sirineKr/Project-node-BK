@@ -114,9 +114,13 @@ app.post('/register',function(req,res){
 //login ws
 app.post('/login',function(req,res){
       res.send(req.body);
-      connection.query("SELECT * from users where login=? and password=? ",[login,pass],function(err,resultat) {
-         console.log(resultat,err);
-         res.json(rows)
+      connection.query("SELECT * from users where login=? and password=? ",[login,pass], function(error,rows,field){
+         if(!!error){
+            console.log('Error in the query');
+         }else{
+            console.log('Successful query');
+            res.json(rows);
+         }
       });
 });
 
