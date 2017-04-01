@@ -98,29 +98,15 @@ app.get('/event/OrderByDateVote', function(req,res){
 
 //create a user
 app.post('/register',function(req,res){
-      console.log(req);
-      console.log("test 2 : "+req.is('application/*'));
-      res.send(req.body);
-      connection.query("INSERT INTO users VALUES (?,?,?,?,?,?)",[req.body.login,req.body.password,req.body.color,req.body.firstName,req.body.lastName,"user"], function(error,rows,field){
-         if(!!error){
-            console.log('Error in the query');
-         }else{
-            console.log('Successful query');
-            res.json(rows);
-         }
+      connection.query("INSERT INTO users VALUES (?,?,?,?,?,?)",[req.body.login,req.body.password,req.body.color,req.body.firstName,req.body.lastName,"user"],function(err,result) {
+            res.send('le resulat est :'+result);
       });
 });
 
 //login ws
 app.post('/login',function(req,res){
-      res.send(req.body);
-      connection.query("SELECT * from users where login=? and password=? ",[req.body.login,req.body.password], function(error,rows,field){
-         if(!!error){
-            console.log('Error in the query');
-         }else{
-            console.log('Successful query');
-            res.json(rows);
-         }
+      connection.query("SELECT * from users where login=? and password=? ",[req.body.login,req.body.password],function(err,result) {
+          res.send('le resulat est :'+result);
       });
 });
 
