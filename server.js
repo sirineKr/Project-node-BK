@@ -49,7 +49,7 @@ app.get('/users', function(req,res){
 
 //get all event
 app.get('/event', function(req,res){
-  connection.query("select event.id, event.description, count(preference.datepref) as nbrvote from event, preference where event.id = preference.idevent group by event.id", function(error,rows,field){
+  connection.query("select event.titre, event.description, count(preference.datepref) as nbrvote from event, preference where event.id = preference.idevent group by event.id", function(error,rows,field){
     if(!!error){
       console.log('Error in the query');
     }else{
