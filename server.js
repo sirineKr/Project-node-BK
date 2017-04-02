@@ -112,7 +112,7 @@ app.post('/login',function(req,res){
 
 //get preference by event
 app.get('/event/preference', function(req,res){
-  connection.query("select users.couleur, preference.datepref from users,preference where preference.idevent=? and users.login=preference.iduser",[req.query.idevent]
+  connection.query("select users.couleur, preference.datepref, users.login from users,preference where preference.idevent=? and users.login=preference.iduser",[req.query.idevent]
 , function(error,rows,field){
     if(!!error){
       console.log('Error in the query');
