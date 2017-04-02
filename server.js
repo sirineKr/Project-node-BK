@@ -85,7 +85,7 @@ app.get('/event/maxVote', function(req,res){
 
 //get event order by max vote date
 app.get('/event/OrderByDateVote', function(req,res){
-  connection.query("SELECT count(datepref) as nb, datepref FROM preference WHERE idevent = 2 group by datepref order by nb DESC"
+  connection.query("SELECT count(datepref) as nb, datepref FROM preference WHERE idevent = ? group by datepref order by nb DESC",[req.query.idevent]
 , function(error,rows,field){
     if(!!error){
       console.log('Error in the query');
