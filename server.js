@@ -123,5 +123,11 @@ app.get('/event/preference', function(req,res){
   });
 });
 
+//create a user
+app.post('/addpreference',function(req,res){
+      connection.query("INSERT INTO preference VALUES (?,?,?)",[req.body.iduser,req.body.idevent,req.body.datepref],function(err,result) {
+            res.send(result);
+      });
+});
 
 app.listen(process.env.PORT || 1337);
