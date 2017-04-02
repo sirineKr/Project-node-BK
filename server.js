@@ -49,7 +49,7 @@ app.get('/users', function(req,res){
 
 //get all event
 app.get('/event', function(req,res){
-  connection.query("Select * from event", function(error,rows,field){
+  connection.query("select event.id, event.description, count(preference.datepref) as nbrvote from event, preference where event.id = preference.idevent group by event.id", function(error,rows,field){
     if(!!error){
       console.log('Error in the query');
     }else{
@@ -123,7 +123,7 @@ app.get('/event/preference', function(req,res){
   });
 });
 
-//create a user
+//add preference
 app.post('/addpreference',function(req,res){
       connection.query("INSERT INTO preference VALUES (?,?,?)",[req.body.iduser,req.body.idevent,req.body.datepref],function(err,result) {
             res.send(result);
